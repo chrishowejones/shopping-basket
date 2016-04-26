@@ -1,0 +1,3 @@
+# Introduction to shopping-basket
+
+TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
