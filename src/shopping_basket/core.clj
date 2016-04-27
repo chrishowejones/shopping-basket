@@ -29,12 +29,21 @@
   [basket]
   (reduce (fn [acc item] (+ acc (cost-of-item item))) 0 (vals basket)))
 
+;; Brian asked about recursion so I've re-implemented total-of-basket recursively too.
+(defn total-of-basket-recur
+  [basket]
+  (loop [acc 0 items (vals basket)]
+    (if (empty? items)
+      acc
+      (let [item (first items)]
+       (recur (cost-of-item item) (rest items))))))
+
 (def basket (atom {}))
 
 (comment
 
 
-
+  (total-of-basket-recur {:a01 [{:code :a01 :name "Jeans" :price 32.99M} 2]})
   (total-of-basket {:a01 [{:code :a01 :name "Jeans" :price 32.99M} 2]})
   (cost-of-item [{:code :a01 :name "Jeans" :price 32.99M} 2])
   (swap! basket add-to-basket (first product-catalogue))
